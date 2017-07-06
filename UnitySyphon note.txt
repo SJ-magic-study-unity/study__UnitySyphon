@@ -1,0 +1,76 @@
+/************************************************************
+************************************************************/
+■Syphon/Unity3D : plugin
+	https://github.com/Syphon/Unity3D/releases
+	
+	note
+		i downloaded
+			SyphonUnityPlugin1.0_Public_Beta2a17
+
+
+■MadMapperとUnityを連動する
+	http://qiita.com/takish/items/e16f1ba1d247eab987f6
+	
+	contents
+		unity -> other app.
+		"The way to use" is so easy, but have some tips.
+		I will show them below.
+		
+	note
+		Unity x syphon:not available after the version of 5.5(5.5 also NG).
+		Because in order to use syphon in unity, we must set "Graphics APIs for Mac" to OpenGL2.
+		But version 5.5 does not have old(OpenGL2) one.
+		So i use 5.3.0.
+		
+	plugins
+		SyphonTexture-AdvancedUsers
+			SyphonServerTextureCutsomResolution
+			
+		SyphonTexture
+			SyphonServerTexture.
+		
+		
+	note2
+		When making standalone app, 
+		make sure that that the build setting is as follow.
+			Mac OSX
+			x86_64 (not x86. it is for 32 bit)
+			radio buttons : all no check
+			
+	PlayerSettings
+		Run in background
+		Graphics API for Mac
+			OpenGL2
+	
+	receiver (oF)
+		client_direct.set("xxx","xxx"); // void set(string _serverName, string _appName);
+		において、
+		_serverName	=	Main Camera(Object Name)
+		_appName	= 	PlayerSetting/ ProductName (not app name.)
+						Unity(when simulation on Unity Editor)
+
+		
+■UnityとVDMXをSyphonで連動させる方法
+	http://yutanakano.wixsite.com/yutanakano/single-post/2016/08/14/test
+	
+	contents
+		other app -> unity
+		
+		1	SyphonUnity pluginをimport
+		2	Unityのmain cameraにplugin/Syphon.csをadd
+		
+			Unityからsendも行う場合、main cameraにplugin/SyphonTexture-AdvancedUsers/SyphonServerTextureCustomResolution.cs
+			をaddしているが、この時は、自動でSyphon.csがaddされていた.
+			->双方向が可能であった.
+			
+		3	oFの画面をtextureとして適用させたいオブジェクトに
+			plugin/SyphonTexture/SyphonClientTexture.cs をadd.
+		4	Client App Name	:	oFのapp name
+			Client Name		:	ofxSyphonServer::setName("xxx"); で指定したname.
+		5	unityからの送信と同様、Player setting/other setting/Graphics API for Mac
+			からOpenGL2を一番上にする.
+	
+	
+	
+	
+	
