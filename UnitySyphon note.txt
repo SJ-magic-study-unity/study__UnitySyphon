@@ -69,8 +69,16 @@
 			Client Name		:	ofxSyphonServer::setName("xxx"); で指定したname.
 		5	unityからの送信と同様、Player setting/other setting/Graphics API for Mac
 			からOpenGL2を一番上にする.
-	
-	
-	
-	
-	
+			
+	tips
+		複数objectを配置すると、配置した全てのobjectに対して、syphon imageが反映されてしまった.
+			SyphonClientTexture.cs は、materialと結びつくようだ。
+			objectを配置した際、"Default-Material"と言う名のmaterialが自動で適用される。
+			SyphonClientTexture.csをaddすると、このmaterialとくっつくため、このmaterialを持つ全てのobjectにsyphon imageが反映されいた。
+			"material_syphon"などのmaterialを新規作成し、反映したいobjectにこれを割りあてることで、本問題を解決することができた。
+			複数objectにsyphon imageを適用したい時は、このmaterialを使いまわせば良い。
+			他のobjectには、(できれば)明示的に他のmaterialを作成->割り当て すること。
+			
+			ちなみに、syphonを適用するmaterialについて、この色を白以外(例えばR)とすると、syphon imageの該当要素のみを抽出して適用させることもできた。
+			
+		
