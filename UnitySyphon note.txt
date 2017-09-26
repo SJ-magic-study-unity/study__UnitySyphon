@@ -77,6 +77,7 @@
 			SyphonClientTexture.csをaddすると、このmaterialとくっつくため、このmaterialを持つ全てのobjectにsyphon imageが反映されいた。
 			"material_syphon"などのmaterialを新規作成し、反映したいobjectにこれを割りあてることで、本問題を解決することができた。
 			複数objectにsyphon imageを適用したい時は、このmaterialを使いまわせば良い。
+			また、materialの設定で、Rendering modeをCutoutにすることで、alpha付きmaterialとなる.
 			他のobjectには、(できれば)明示的に他のmaterialを作成->割り当て すること。
 			
 			ちなみに、syphonを適用するmaterialについて、この色を白以外(例えばR)とすると、syphon imageの該当要素のみを抽出して適用させることもできた。
